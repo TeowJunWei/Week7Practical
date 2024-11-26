@@ -3,8 +3,8 @@ run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
   behave-testing:
-    # setup of simple OS of choice, i.e. Linux
-    # create VM with ubuntu OS
+    # Setup a simple OS of choice, i.e., Linux
+    # Create VM with Ubuntu OS
     runs-on: ubuntu-latest
 
     steps:
@@ -23,23 +23,23 @@ jobs:
         with:
           python-version: '3.9'
 
-      # Step 4: Install a Python package using pip-install-package-action
-      - name: Install Python package
-        uses: durandtibo/pip-install-package-action@v0.3.1
-        with:
-          # Specify the package name and version you want to install
-          package-name: behave    # Replace with the actual package name
-          package-version: '1.2.6'  # Replace with the desired version, or leave blank for the latest
-          python-version: '3.9'
-    
+      # Step 4: Install Behave using pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install behave==1.2.6  # Install Behave with a specific version (adjust version if needed)
+          pip install -r requirements.txt  # Install dependencies from requirements file (if applicable)
+
+      # Step 5: Run Behave tests
       - name: Run Behave tests
         uses: cryptic-wizard/run-behave-tests@v0.4.0
         with:
           # Name of the dependencies file (e.g., requirements.txt)
-          requirements-name: requirements.txt  # Adjust if your file is named differently
+          requirements-name: requirements.txt  # Optional, remove if not needed
           # Path of the features folder (if not in the root directory)
-          test-path: features  # Replace with the actual path to your features folder, if needed
+          test-path: features  # Replace with the actual path to your features folder
           # Name of the output file for results
-          test-output-name: results.txt  # Optional; customize as desired
+          test-output-name: results.txt  # Optional, customize as desired
           # Automatically upload the artifact (true/false)
           upload-artifact: true  # Default is true, adjust if needed
+
