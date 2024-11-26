@@ -6,7 +6,9 @@ jobs:
     # Setup a simple OS of choice, i.e., Linux
     # Create VM with Ubuntu OS
     runs-on: ubuntu-latest
-
+    permissions:
+      issues: write  # Grant permissions to create issues
+      
     steps:
       # Step 1: Checkout code from repository
       - name: Checkout
