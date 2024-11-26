@@ -14,7 +14,7 @@ Feature: Calculator
 	Scenario: Multiplication
 		Given the calculator is initialized
 		When I multiply 6 and 7
-		Then the result should be 41
+		Then the result should be 42
 
 	Scenario: Division
 		Given the calculator is initialized
