@@ -1,4 +1,3 @@
-
 name: Run commands on different operating systems
 on:
   push:
