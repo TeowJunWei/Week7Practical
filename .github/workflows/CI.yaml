@@ -11,6 +11,12 @@ jobs:
       # Step 1: Checkout code from repository
       - name: Checkout
         uses: actions/checkout@v4.2.2
+      - name: Create an issue
+        uses: dacbd/create-issue-action@main
+        with:
+          token: ${{ github.token }}
+          title: Simple test issue
+          body: my new issue
 
       # Step 2: List files in the repository
       - name: List repo
