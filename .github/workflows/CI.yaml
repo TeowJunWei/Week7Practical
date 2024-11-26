@@ -1,32 +1,16 @@
-name: Run commands on different operating systems
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+name: CI Process
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
 jobs:
-  Run-npm-on-Ubuntu:
-    name: Run npm on Ubuntu
+  behave-testing:
+    # setup of simple OS of choice, i.e. Linux
+    # create VM with ubuntu OS
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '14'
-      - run: npm help
 
-  Run-PSScriptAnalyzer-on-Windows:
-    name: Run PSScriptAnalyzer on Windows
-    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Install PSScriptAnalyzer module
-        shell: pwsh
+      # Setup of environment for test
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+      - name: List repo
         run: |
-          Set-PSRepository PSGallery -InstallationPolicy Trusted
-          Install-Module PSScriptAnalyzer -ErrorAction Stop
-      - name: Get list of rules
-        shell: pwsh
-        run: |
-          Get-ScriptAnalyzerRule
+          ls
