@@ -33,10 +33,5 @@ jobs:
       - name: Run Behave tests
         uses: cryptic-wizard/run-behave-tests@v0.4.0
         with:
-          # Path of the features folder (if not in the root directory)
-          test-path: features  # Replace with the actual path to your features folder
-          # Name of the output file for results
-          test-output-name: results.txt  # Optional, customize as desired
-          # Automatically upload the artifact (true/false)
           upload-artifact: true  # Default is true, adjust if needed
 
