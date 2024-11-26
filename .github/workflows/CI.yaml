@@ -33,5 +33,13 @@ jobs:
           python-version: '3.9'
     
       - name: Run Behave tests
-        run: |
-          behave  # Make sure `features/` directory exists in your repo
+        uses: cryptic-wizard/run-behave-tests@v0.4.0
+        with:
+          # Name of the dependencies file (e.g., requirements.txt)
+          requirements-name: requirements.txt  # Adjust if your file is named differently
+          # Path of the features folder (if not in the root directory)
+          test-path: features  # Replace with the actual path to your features folder, if needed
+          # Name of the output file for results
+          test-output-name: results.txt  # Optional; customize as desired
+          # Automatically upload the artifact (true/false)
+          upload-artifact: true  # Default is true, adjust if needed
